@@ -1,0 +1,20 @@
+ void inOrder(TreeNode* A, int& smallest, int k, int& it)
+ {
+     if(A == NULL)
+     return;
+     inOrder(A->left, smallest, k, it);
+     ++it;
+     if(it == k)
+     {
+        smallest = A->val;
+        return;
+     }
+     inOrder(A->right, smallest, k, it);
+}
+ 
+int Solution::kthsmallest(TreeNode* A, int k) {
+    int smallest = -1;
+    int it = 0;
+    inOrder(A, smallest, k, it);
+    return smallest;
+}
