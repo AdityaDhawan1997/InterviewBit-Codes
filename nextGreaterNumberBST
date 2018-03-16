@@ -1,0 +1,53 @@
+ TreeNode* findNode(TreeNode* root, int key)
+ {
+     if(root->val == key)
+     {
+           return root;
+     }
+     
+    else if(root->val < key)
+     {
+        return findNode(root->right, key);
+     }
+     else
+     {
+         return findNode(root->left, key);
+     }
+ }
+TreeNode* Solution::getSuccessor(TreeNode* root, int key) {
+    
+    TreeNode* required = findNode(root, key);
+    TreeNode* prev = NULL;
+    TreeNode* current = root;
+    if (required == NULL)
+    {
+        return NULL;
+    }
+   else if (required -> right != NULL)
+    {
+        prev = required->right;
+        TreeNode* temp = required->right;
+        while(temp != NULL)
+        {
+            prev = temp;
+            temp = temp->left;
+        }
+        return prev;
+    }
+    else
+    {
+        prev = NULL;
+        while( current != required){
+            if(current->val < key)
+            {
+            current =current->right;
+            }
+            else
+            {
+                prev = current;
+                current = current -> left;
+            }
+        }
+    }
+            return prev;
+}
