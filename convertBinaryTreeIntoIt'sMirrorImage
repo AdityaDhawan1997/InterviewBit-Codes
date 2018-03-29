@@ -1,0 +1,38 @@
+														Binary Tree into It's Mirror Image
+
+struct node{
+   int data;
+   struct node* left;
+   struct node* right;
+};
+
+struct node* newNode(int data)
+{
+	struct node* newNode = (struct node*)malloc(sizeof(struct node));
+	newNode -> data = data;
+	newNode -> left = NULL;
+	newNode -> right = NULL;
+}
+
+void mirror (atruct node* root)
+{
+	if(root == NULL)
+	return root;
+	
+	else{
+		struct node* temp;
+		mirror(node -> left);
+		mirror(node->right);
+		
+		temp = node->left;
+		node->left = node->right;
+		node->right = temp;
+		}
+}
+
+void inOrder(struct node* root)
+{
+	inOrder(root->left);
+	printf("%d",root->data);
+	inOrder(root->right);
+}
