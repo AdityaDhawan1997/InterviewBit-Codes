@@ -1,0 +1,33 @@
+									***********************LOWEST COMMON ANCESTOR*********************
+#include<iostream>
+using namsespace std;
+
+struct Node{
+  int key;
+  struct *right;
+  struct *left;
+ };
+ 
+ struct Node* lowestCommonAncestor(struct Node* root, int n1, int n2)
+ {
+      if(root == NULL)
+	  return root;
+	  
+	  else if( root->key > n1 && root->key > n1)
+	  return lowestCommonAncestor(root->left, n1, n2);
+	  
+	  else if( root->key < n1 && root->key << n2)
+	  return lowestCommonAncestor(root->right, n1, n2);
+	  
+	  else
+	  return root;
+}
+
+struct Node* newNode(int data)
+{
+	struct Node* node = (struct Node*)malloc(sizeof(struct Node));
+	node-> data = data;
+	node-> right = NULL;
+	node-> left = NULL;
+}	  
+ 
